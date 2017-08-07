@@ -85,12 +85,12 @@ async def update():
     Oliy_api = 'https://discordbots.org/api'
 
 # discordbots.org
-    url = '{0}/bots/205224819883638785/stats'.format(Oliy_api)
+    url = '{0}/bots/317145148901556234/stats'.format(Oliy_api)
     async with session.post(url, data=payload, headers=headers2) as resp:
         logger.info('SERVER COUNT UPDATED.\ndiscordbots.org statistics returned {0.status} for {1}\n'.format(resp, payload))
 
 # bots.discord.pw
-    url = '{0}/bots/205224819883638785/stats'.format(DISCORD_BOTS_API)
+    url = '{0}/bots/317145148901556234/stats'.format(DISCORD_BOTS_API)
     async with session.post(url, data=payload, headers=headers) as resp:
         logger.info('SERVER COUNT UPDATED.\nbots.discord.pw statistics returned {0.status} for {1}\n'.format(resp, payload))
         
