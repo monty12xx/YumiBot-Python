@@ -62,4 +62,36 @@ async def info(ctx):
     except Exception as e:
         await bot.say("{0.mention}: I recieved an error when trying to run the command! `{1}`\nYou shouldn't receive an error like this. \nContact Desiree#3658 in the support server, link in `{2}about`.".format(ctx.message.author, e, bot.command_prefix))
 
+        @bot.event
+async def update():
+
+    payload = json.dumps({
+        'shard_id': 0,
+        'shard_count': 10,
+        'server_count': len(bot.servers)
+    })
+
+    headers = {
+        'authorization': 'Your Key',
+        'content-type': 'application/json'
+    }
+
+    headers2 = {
+        'authorization': 'Your Key',
+        'content-type': 'application/json'
+    }
+
+    DISCORD_BOTS_API = 'https://bots.discord.pw/api'
+    Oliy_api = 'https://discordbots.org/api'
+
+# discordbots.org
+    url = '{0}/bots/205224819883638785/stats'.format(Oliy_api)
+    async with session.post(url, data=payload, headers=headers2) as resp:
+        logger.info('SERVER COUNT UPDATED.\ndiscordbots.org statistics returned {0.status} for {1}\n'.format(resp, payload))
+
+# bots.discord.pw
+    url = '{0}/bots/205224819883638785/stats'.format(DISCORD_BOTS_API)
+    async with session.post(url, data=payload, headers=headers) as resp:
+        logger.info('SERVER COUNT UPDATED.\nbots.discord.pw statistics returned {0.status} for {1}\n'.format(resp, payload))
+        
 bot.run('token')
