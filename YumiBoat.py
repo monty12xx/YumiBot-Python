@@ -67,7 +67,7 @@ async def update():
 
     payload = json.dumps({
         'shard_id': 0,
-        'shard_count': 10,
+        'shard_count': 1,
         'server_count': len(bot.servers)
     })
 
